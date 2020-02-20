@@ -1,0 +1,16 @@
+{
+  "name": "jp/shopping",
+  "type": "project",
+  "require": {
+    "twig/twig": "~2.0"
+  },
+  "authors": [
+    {
+      "name": "Jeff",
+      "email": "jefercasjn@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {"Shopping\\": "src/"}
+  }
+}

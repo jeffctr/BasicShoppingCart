@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3>Products list</h3>
+                    {% include 'products.html.twig' %}
+                </div>
+                <div class="col">
+                    <h3>Cart Products</h3>
+                    {% include 'cart.html.twig' %}
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        {% block javascript %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

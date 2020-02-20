@@ -1,0 +1,23 @@
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Add to cart</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for index, product in products %}
+            <tr>
+                <th scope="row">{{ index }}</th>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price | number_format(2) }}</td>
+                <td><a href="/?add={{ index }}&quantity={{ 1 }}" class="btn btn-link">Add</a></td>
+            </tr>
+        {% endfor %}
+        {# include '_form.html.twig' #}
+        </tbody>
+    </table>
+{% endblock %}

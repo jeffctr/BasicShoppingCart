@@ -1,0 +1,19 @@
+version: '3.7'
+
+networks:
+  shoppingnet:
+    external: true
+    name: localdev
+
+services:
+  php:
+    build:
+      context: .
+    networks:
+      - shoppingnet
+    container_name: shopping
+    restart: on-failure
+    environment:
+      VIRTUAL_HOST: shopping.docker
+    volumes:
+      - ./code:/var/www/html

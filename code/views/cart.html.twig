@@ -1,0 +1,34 @@
+{% block content %}
+    {% set totalPay = 0 %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+            <th scope="col">Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for index, product in cart %}
+            <tr>
+                <th scope="row">{{ index }}</th>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price | number_format(2) }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.total | number_format(2, '.', ',') }}</td>
+                <td><a href="/?add={{ index }}&quantity={{ -1 }}" class="btn btn-link">Remove</a></td>
+                {% set totalPay = totalPay + product.total %}
+            </tr>
+        {% endfor %}
+        {% if totalPay %}
+            <tr>
+                <th colspan="4">Total to Pay</th>
+                <td>{{ totalPay | number_format(2, '.', ',') }}</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
