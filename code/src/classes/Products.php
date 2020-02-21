@@ -22,8 +22,8 @@ class Products
     function add(array $products)
     {
         // If the data isn't empty check that it does not exist in the products
-        $products = $this->validation($products);
-        $this->setProucts($products);
+        $products = $this->productsValidation($products);
+        $this->setProducts($products);
     }
 
     /**
@@ -35,7 +35,7 @@ class Products
      * @param int $i
      * @return array
      */
-    function validation(array $products, array $box=[], int $i = 0): array
+    function productsValidation(array $products, array $box=[], int $i = 0): array
     {
         // End condition for the recursion
         if ($i >= count($products)) {
@@ -47,35 +47,35 @@ class Products
 
         // Check that the item is not an empty array
         if (empty($product)){
-            return $this->validation($products, $box, $i+=1);
+            return $this->productsValidation($products, $box, $i+=1);
         }
 
         // Check that the name is a string and no empty
         if (empty($product['name']) || !is_string($product['name'])) {
-            return $this->validation($products, $box, $i+=1);
+            return $this->productsValidation($products, $box, $i+=1);
         }
 
         // Check that the price is not empty and it is a number
         if (empty($product['price'])
             || !(is_float($product['price']) || is_int($product['price']))
         ) {
-            return $this->validation($products, $box, $i+=1);
+            return $this->productsValidation($products, $box, $i+=1);
         }
 
         // Avoid to overwrite the first product with the second that has the same name
         if (isset($box[$product['name']])) {
-            return $this->validation($products, $box, $i+=1);
+            return $this->productsValidation($products, $box, $i+=1);
         }
 
         // Add product in a hash array with the name as a key
         $box[$product['name']] = $product;
-        return $this->validation($products, $box, $i+=1);
+        return $this->productsValidation($products, $box, $i+=1);
     }
 
     /**
      * @param array $products
      */
-    function setProucts(array $products)
+    function setProducts(array $products)
     {
         $this->products = $products;
     }

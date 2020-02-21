@@ -1,5 +1,4 @@
 <?php
-session_start();
 include ('vendor/autoload.php');
 
 use Shopping\classes\Products;
@@ -13,19 +12,18 @@ class App
 {
     private $twig;
     const PRODUCTS = [
-        [],
         ['name' => 'Sledgehammer', 'price' => 125.75 ],
         ['name' => 'Axe', 'price' => 190.50 ],
         ['name' => 'Bandsaw', 'price' => 562.131 ],
         ['name' => 'Chisel', 'price' => 12.9 ],
         ['name' => 'Hacksaw', 'price' => 18.45 ],
-        '',
-        2,
     ];
-
 
     function __construct(\Twig\Environment $twig)
     {
+        if (!session_id()) {
+            session_start();
+        }
         $this->twig = $twig;
     }
 
