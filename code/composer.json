@@ -2,7 +2,7 @@
   "name": "jp/shopping",
   "type": "project",
   "require": {
-    "twig/twig": "~2.0"
+    "twig/twig": "~3.11"
   },
   "authors": [
     {
